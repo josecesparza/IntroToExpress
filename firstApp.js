@@ -19,6 +19,17 @@ app.get("/dog", function(req, res){
 	res.send("MEAOW!");
 });
 
+//using route parameters
+app.get("/r/:subredditName", function(req, res){
+	var subreddit = req.params.subredditName;
+	console.log("req.params.subredditName ==>" + req.params.subredditName);
+	res.send("WELCOME TO THE " + subreddit.toUpperCase() + " SUBREDDIT");
+});
+
+app.get("/r/:subredditName/comments/:id/:title", function(req, res){
+	res.send("WELCOME TO THE COMMENTS PAGE");
+});
+
 // "*" all routes that haven't matched before
 app.get("*", function(req, res){
 	res.send("OOPS! Nothing here!");
