@@ -6,16 +6,17 @@ app.get('/', function(req, res){
 });
 
 app.get('/speak/:animal', function(req, res){
-    var animal = req.params.animal;
-    if(animal == "pig"){
-        res.send("The pig says 'Oink!'");
-    }else if(animal == "cow"){
-        res.send("The pig says 'Moo!'");
-    }else if(animal == "dog"){
-        res.send("The pig says 'Woof Woof!'");
-    }else {
-        res.send("Animal unavailable! Select pig, cow or dog");
+    var sounds = {
+        pig: "Oink",
+        cow: "Moo",
+        dog: "Woof Woof!",
+        cat: "I hate you humans",
+        goldfish: "..."
     }
+
+    var animal = req.params.animal;
+    var sound = sounds[animal];
+    res.send("The " + animal + " says " + sound);
 });
 
 app.get('/repeat/:word/:ntimes', function(req, res){
